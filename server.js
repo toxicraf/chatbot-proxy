@@ -42,9 +42,10 @@ app.post("/chat", async (req, res) => {
     console.log(data);
 
     // Handle API errors
-    if (data.error) {
-      return res.json({ reply: "AI service error. Try again later." });
-    }
+if (data.error) {
+  console.log("OPENAI ERROR:", data.error);
+  return res.json({ reply: data.error.message });
+}
 
     const reply = data.choices?.[0]?.message?.content || "No response";
 
