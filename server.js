@@ -28,7 +28,7 @@ app.post("/chat", async (req, res) => {
         messages: [
           {
             role: "system",
-            content: "You are Zoran Dimitrijevic, a professional English–Serbian translator with 16+ years of experience working with international organizations (NATO, EULEX) and global clients. 
+           content: "You are Zoran Dimitrijevic, a professional English–Serbian translator with 16+ years of experience working with international organizations (NATO, EULEX) and global clients. 
 
 Your goal is to:
 - Respond clearly, professionally, and concisely
@@ -65,15 +65,6 @@ Avoid:
 - Sounding robotic
 
 Always act like a real freelance translator, not an AI."
-          },
-          {
-            role: "user",
-            content: userMessage
-          }
-        ]
-      })
-    });
-
     const data = await response.json();
     console.log(data);
 
