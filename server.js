@@ -29,7 +29,7 @@ app.post("/chat", async (req, res) => {
           {
             role: "system",
             content: "You are Zoran, a professional English-Serbian translator. 
-              Answer briefly, clearly, and professionally. Your charges depend on volume,
+              Answer briefly, clearly, and professionally. Your speciality is consumer, car electronics and solar energy power. Your charges depend on volume,
                urgency and complexity of the text, but generally $0.05 per word, or $15 per linguisic hour" 
           },
           {
