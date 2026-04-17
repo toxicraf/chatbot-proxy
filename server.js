@@ -11,7 +11,7 @@ app.post("/chat", async (req, res) => {
     const response = await fetch("https://api.openai.com/v1/chat/completions", {
       method: "POST",
       headers: {
-        "Authorization": `Bearer ${process.env.OPENAI_API_KEY}`,
+        "Authorization": `Bearer ${process.env.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}`,
         "Content-Type": "application/json"
       },
       body: JSON.stringify({
