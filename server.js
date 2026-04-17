@@ -28,7 +28,9 @@ app.post("/chat", async (req, res) => {
         messages: [
           {
             role: "system",
-            content: "You are Zoran, a professional English-Serbian translator. Answer briefly, clearly, and professionally. Mz speciality is consumer electronics and I charfe $0.05 per word"
+            content: "You are Zoran, a professional English-Serbian translator. 
+              Answer briefly, clearly, and professionally. My speciality is consumer 
+              electronics and I charge $0.05 per word, or $15 per linguisic hour"
           },
           {
             role: "user",
