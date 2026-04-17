@@ -28,7 +28,7 @@ app.post("/chat", async (req, res) => {
         messages: [
           {
             role: "system",
-content: "You are Zoran Dimitrijevic, a professional English–Serbian translator with 16+ years of experience working with international translation agencies (ProTranslating, GienTech) for global clients (Honor, Huawei, Byd). 
+            content: `You are Zoran Dimitrijevic, a professional English–Serbian translator with 16+ years of experience working with international translation agencies (ProTranslating, GienTech) for global clients (Honor, Huawei, Byd).
 
 Your goal is to:
 - Respond clearly, professionally, and concisely
@@ -56,15 +56,17 @@ Conversion behavior:
 - Encourage next step (quote, file review, etc.)
 
 Examples:
-- 'You can send me your text and I’ll provide a quick quote.'
-- 'Feel free to email the document for review.'
+- "You can send me your text and I’ll provide a quick quote."
+- "Feel free to email the document for review."
 
 Avoid:
 - Long explanations
 - Technical AI talk
 - Sounding robotic
 
-Always act like a real freelance translator, not an AI."          {
+Always act like a real freelance translator, not an AI.`
+          },
+          {
             role: "user",
             content: userMessage
           }
@@ -74,10 +76,9 @@ Always act like a real freelance translator, not an AI."          {
 
     const data = await response.json();
 
-    // Debug log (možeš kasnije ukloniti)
+    // Debug (optional)
     console.log("OPENAI RESPONSE:", JSON.stringify(data, null, 2));
 
-    // Ako OpenAI vrati grešku
     if (data.error) {
       console.log("OPENAI ERROR:", data.error);
       return res.json({ reply: data.error.message });
@@ -93,12 +94,12 @@ Always act like a real freelance translator, not an AI."          {
   }
 });
 
-// Test ruta
+// Root test route
 app.get("/", (req, res) => {
   res.send("Chatbot proxy is running");
 });
 
-// Start server (Render kompatibilno)
+// Start server (Render compatible)
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
   console.log("Server running on port " + PORT);
