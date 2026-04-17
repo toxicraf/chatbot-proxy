@@ -4,12 +4,18 @@ import cors from "cors";
 
 const app = express();
 
+// Middleware
 app.use(cors());
 app.use(express.json());
 
+// Chat endpoint
 app.post("/chat", async (req, res) => {
   try {
     const userMessage = req.body.message;
+
+    if (!userMessage) {
+      return res.json({ reply: "Empty message" });
+    }
 
     const response = await fetch("https://api.openai.com/v1/chat/completions", {
       method: "POST",
@@ -22,7 +28,7 @@ app.post("/chat", async (req, res) => {
         messages: [
           {
             role: "system",
-            content: "You are Zoran, a professional English-Serbian translator."
+            content: "You are Zoran, a professional English-Serbian translator. Answer briefly, clearly, and professionally."
           },
           {
             role: "user",
@@ -34,23 +40,27 @@ app.post("/chat", async (req, res) => {
 
     const data = await response.json();
 
-    res.json({
-      reply: data.choices?.[0]?.message?.content || "No response"
-    });
+    // Handle API errors
+    if (data.error) {
+      return res.json({ reply: "AI service error. Try again later." });
+    }
+
+    const reply = data.choices?.[0]?.message?.content || "No response";
+
+    res.json({ reply });
 
   } catch (err) {
-    res.json({ reply: "Server error" });
+    console.error(err);
+    res.json({ reply: "Server error. Please try again." });
   }
 });
 
+// Root route (for testing)
 app.get("/", (req, res) => {
   res.send("Chatbot proxy is running");
 });
 
-const PORT = process.env.PORT || 3000;
-app.listen(PORT, () => {
-  console.log("Server running on port " + PORT);
-});
+// Start server (IMPORTANT for Render)
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
   console.log("Server running on port " + PORT);
