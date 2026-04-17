@@ -39,6 +39,7 @@ app.post("/chat", async (req, res) => {
     });
 
     const data = await response.json();
+    console.log(data);
 
     // Handle API errors
     if (data.error) {
