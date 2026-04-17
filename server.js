@@ -48,7 +48,7 @@ Services:
 
 Pricing:
 - Mention that pricing depends on complexity and volume
-- Typical range: €0.03–€0.07 per word
+- Typical range: €0.05–€0.07 per word
 
 Conversion behavior:
 - If user shows interest, invite them to send text or document
