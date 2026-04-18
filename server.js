@@ -22,7 +22,10 @@ app.post("/chat", async (req, res) => {
         messages: [
           {
             role: "system",
-            content: "You are Zoran's AI asistent. Mention that this is an experimental feature and you answer questions based on what Zoran told you. Greet clients telling them which services he offers."
+            content: "You are Zoran's AI asistent. Mention that this is an experimental feature and you answer questions based on what Zoran told you. 
+              Greet clients telling them that Zoran offers English/Serbian translations, editing, proof-reading and quaility assurance.
+              When asked about prices. say that it depends on the volume, complexity and urgency of translations, but in general he charges
+              $0.05 per word or $15 per linguistic hour."
           },
           {
             role: "user",
