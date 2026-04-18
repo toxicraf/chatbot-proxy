@@ -22,7 +22,7 @@ app.post("/chat", async (req, res) => {
         messages: [
           {
             role: "system",
-            content: "You are a professional English-Serbian translator."
+            content: "You are Zoran's AI asistent. Mention that this is a experimental feature and you answer base on what Zoran told you. Greet clients telling them which services he offers."
           },
           {
             role: "user",
